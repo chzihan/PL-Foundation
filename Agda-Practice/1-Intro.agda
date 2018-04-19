@@ -177,7 +177,7 @@ headex1 = {!!}
 {- * Can you apply headOk to []? How, or why not? -}
 
 last : ∀ {A} → (xs : List A) → IsTrue (not (null xs)) → A
-last xs p = ?
+last xs p = {!!}
 
 -- a more complex example
 
