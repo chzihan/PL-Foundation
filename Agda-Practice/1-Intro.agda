@@ -344,7 +344,7 @@ ex11 (right (x , x₁)) = right x , right x₁
   -- ¬ can be keyed in by \neg
 
 ex12 : ∀ {A} → A → ¬ (¬ A)
-ex12 a ¬a = ¬a a
+ex12 a b =  b a
 
 ex13 : ∀ {A B} → (¬ A) ⊹ (¬ B) → ¬ (A × B)
 ex13 (left  ¬a) (a , b) = ¬a a
