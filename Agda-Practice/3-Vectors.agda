@@ -54,27 +54,30 @@ data Vec (A : Set) : ℕ → Set where
 -- examples
 
 ex0 : Vec ℕ 0
-ex0 = {!!}
+ex0 = []
 
 ex1 : Vec ℕ 1
-ex1 = {!!}
+ex1 = 1 ∷ []
 
 ex2 : Vec ℕ 2
-ex2 = {!!}
+ex2 = 0 ∷ (1 ∷ [])
 
-head : {A : Set}{n : ℕ} → {!!}
-head = {!!}
+head : {A : Set}{n : ℕ} → Vec A (suc n) → A
+head (x ∷ xs) = x
 
-tail : {A : Set}{n : ℕ} → {!!}
-tail = {!!}
+tail : {A : Set}{n : ℕ} → Vec A (suc n) → A
+tail (x ∷ []) = x
+tail (x ∷ y ∷ xs) = tail (y ∷ xs)
 
 zip : ∀{A B n} → Vec A n → Vec B n → Vec (A × B) n
-zip xs ys = {!!}
+zip [] [] = []
+zip (x ∷ xs) (x₁ ∷ ys) = x , x₁ ∷ zip xs ys
 
 zip3 : ∀{A B C n} → 
          Vec A n → Vec B n → Vec C n →
            Vec (A × B × C) n
-zip3 xs ys zs = {!!}
+zip3 [] [] [] = []
+zip3 (x ∷ xs) (x₁ ∷ ys) (x₂ ∷ zs) = (x , x₁ , x₂) ∷ zip3 xs ys zs
 
 -- concatenating vectors
 
@@ -83,7 +86,8 @@ zero + n = n
 (suc m) + n = suc (m + n)
 
 _++_ : ∀ {A m n} → Vec A m → Vec A n → Vec A (m + n)
-xs ++ ys = {!!}
+[] ++ ys = ys
+(x ∷ xs) ++ ys = x ∷ (xs ++ ys)
 
   -- What is it about _+_ which makes _++_ typecheck?
 
