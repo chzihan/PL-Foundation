@@ -23,7 +23,7 @@ module 2-DepTypes where
 exII-2 : ∀ {A B : Set} {C : A → B → Set} 
       → ((x : A) → (y : B) → C x y)
       → ((y : B) → (x : A) → C x y)
-exII-2 = {!!}
+exII-2 f y x = f x y
 
 data _×_ (A B : Set) : Set where
   _,_ : A → B → A × B
@@ -48,17 +48,17 @@ snd' (x , y) = y
 exII-3 : ∀ {A B : Set} {C : A → B → Set} 
       → Σ (A × B) (λ p → C (fst p) (snd p))
       → Σ A (λ x → (Σ B (λ y → C x y)))
-exII-3 = {!!}
+exII-3 ((x , y) , z) = x , (y , z)
 
 exII-4a : ∀ {A : Set} {B C : A → Set}
       → ((y : A) → B y) × ((z : A) → C z)
       → ((x : A) → (B x × C x))
-exII-4a = {!!}
+exII-4a (x , x₁) = λ x₂ → x x₂ , x₁ x₂
 
 exII-4b : ∀ {A : Set} {B C : A → Set}
       → ((x : A) → (B x × C x))
       → ((y : A) → B y) × ((z : A) → C z)
-exII-4b = {!!}
+exII-4b f =  (λ y → fst (f y)) , λ z → snd (f z)
 
 -- Axiom of Choice!
 
