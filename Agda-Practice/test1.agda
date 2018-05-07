@@ -79,10 +79,5 @@ headOk (x ∷ xs) p = x
 ex5 : ℕ
 ex5 = headOk (1 ∷ 2 ∷ 3 ∷ []) tt
 
-{-
-ex6 : ℕ
-ex6 = headOk [] {!!}
--}
-
 
 

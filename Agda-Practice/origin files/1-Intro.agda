@@ -90,24 +90,23 @@ id x = x
 -- Type Theory class yesterday.
 
 ex2 : ∀ {A B C : Set} → (A → B → C) → B → A → C
-ex2 f b a = f a b
+ex2 = {!!}
 
     -- ∀ {A B C : τ} is an abbreviation of
     -- ∀ {A : τ} {B : τ} {C : τ}
 
 ex3 : ∀ {A B C : Set} → (A → B) → (B → C) → A → C
-ex3 f1 f2 a = f2 (f1 a)
+ex3 = {!!}
 
 ex4 : ∀ {A B C : Set} → 
         (A → B → C) → (A → B) → A → C
-ex4 f1 f2 a = f1 a (f2 a)
+ex4 = {!!}
 
 -- It's of course helpful to know whether a
 -- list is [] or not.
 
 null : ∀ {A} → List A → Bool
-null [] = true
-null (x ∷ xs) = false
+null xs = {!!}
 
    -- ∀ {A} is a shorter syntax for 
    --  {A : τ} when τ can be inferred.
@@ -166,8 +165,7 @@ IsTrue true  = ⊤
 
 headOk : ∀ {A} → (xs : List A) →
             (IsTrue (not (null xs))) → A
-headOk [] ()
-headOk (x ∷ xs) tt = x
+headOk xs p = {!!}
 
    --- ..... headOk [] (...) ...
 
