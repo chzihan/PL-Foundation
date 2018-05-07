@@ -174,12 +174,15 @@ headOk (x ∷ xs) tt = x
 {- * Use headOk to extract the first component of ex1 -}
 
 headex1 : ℕ
-headex1 = {!!}  
+headex1 = headOk ex1 tt
+
 
 {- * Can you apply headOk to []? How, or why not? -}
 
 last : ∀ {A} → (xs : List A) → IsTrue (not (null xs)) → A
-last xs p = {!!}
+last [] ()
+last (x ∷ []) p = x
+last (x ∷ y ∷ xs) p = last (y ∷ xs) p
 
 -- a more complex example
 
@@ -188,7 +191,8 @@ true ∨ _ = true
 false ∨ b = b
 
 _∧_ : Bool → Bool → Bool
-b ∧ c = {!!}
+false ∧ c = false
+true ∧ c = c
 
 somewhere : ∀ {A} → (A → Bool) → List A → Bool
 somewhere p [] = false
@@ -196,12 +200,18 @@ somewhere p (x ∷ xs) = p x ∨ somewhere p xs
 
 find1st : ∀{A} → (p : A → Bool) → (xs : List A) →
            IsTrue (somewhere p xs) → A 
-find1st p xs q = {!!}
+find1st p [] ()
+find1st p (x ∷ xs) q with p x
+... | false = find1st p xs q
+... | true = x
 
 -- Equality for ℕ
 
 _==_ : ℕ → ℕ → Bool
-m == n = {!!}
+zero == zero = true
+zero == suc n = false
+suc m == zero = false
+suc m == suc n = m == n
 
 -- Less-than-or-equal-to for ℕ
 
@@ -211,7 +221,10 @@ suc m ≤ zero = false
 suc m ≤ suc n = m ≤ n
 
 _<_ : ℕ → ℕ → Bool
-m < n = {!!}
+zero < zero = false
+zero < suc n = true
+suc m < zero = false
+suc m < suc n = m < n
 
 -- lengths of lists
 
@@ -224,7 +237,10 @@ length (x ∷ xs) = suc (length xs)
     we call index xs n, we must have shown that n < length xs -}
 
 index : ∀ {A} → (xs : List A) → (n : ℕ) → IsTrue (n < length xs) → A
-index xs n = {!!}
+index [] zero ()
+index (x ∷ xs) zero p = x
+index [] (suc n) ()
+index (x ∷ xs) (suc n) p = index xs n p
 
 -- Pairs. 
 
@@ -237,7 +253,7 @@ fst (x , y) = x
 snd : ∀ {A B} → A × B → B
 snd (x , y) = y
 
-ex5 : {!!}  -- what is the type of ex2?
+ex5 : (ℕ × Bool) × Bool  -- what is the type of ex2?
 ex5 = ((2 , true), false)
 
 {- * Extract the components 2, true, and false in ex2,
@@ -255,14 +271,20 @@ ex5 = ((2 , true), false)
         (1 , true) ∷ (2 , false) ∷ []
 -}
 zip : ∀ {A B} → (xs : List A) → (ys : List B) → List (A × B)
-zip xs ys = {!!} 
+zip [] [] = []
+zip [] (x ∷ ys) = []
+zip (x ∷ xs) [] = []
+zip (x ∷ xs) (x₁ ∷ ys) = x , x₁ ∷ zip xs ys 
 
 {- The following function zip= is like zip, but insisting
    that the two arguments must have the same length -}
 
 zip= : ∀ {A B} → (xs : List A) → (ys : List B) 
       → IsTrue (length xs == length ys) → List (A × B)
-zip= xs ys = {!!}
+zip= [] [] tt = []
+zip= [] (x ∷ ys) ()
+zip= (x ∷ xs) [] ()
+zip= (x ∷ xs) (x₁ ∷ ys) p = x , x₁ ∷ zip= xs ys p
 
 -- Σ type.
 
@@ -285,10 +307,10 @@ snd' (x , y) = y
 --   - Bool if the value of its first component it true.
 
 ex6 : Σ Bool ℕorBool
-ex6 = (false , {!!})
+ex6 = (false , 1)
 
 ex7 : Σ Bool ℕorBool
-ex7 = (true , {!!})
+ex7 = (true , true)
 
 -- What's the use of this? We will see later.
 
@@ -296,7 +318,7 @@ ex7 = (true , {!!})
 -- class yesterday.
 
 ex8 : ∀ {A B} → (A × B) → (B × A)
-ex8 = {!!}
+ex8 (x , y) = (y , x)
 
 data _⊹_ (A B : Set) : Set where
   left  : A → A ⊹ B
@@ -305,23 +327,28 @@ data _⊹_ (A B : Set) : Set where
     -- ⊹ can be keyed in by \ + <space>
 
 ex9 : ∀ {A B} → A ⊹ B → B ⊹ A
-ex9 = {!!}
+ex9 (left x) = right x
+ex9 (right x) = left x
 
 ex10 : ∀ {A B C} → A ⊹ (B ⊹ C) → (A ⊹ B) ⊹ C 
-ex10 = {!!}
+ex10 (left x) = left (left x)
+ex10 (right (left x)) = left (right x)
+ex10 (right (right x)) = right x
 
 ex11 : ∀ {A B C} → A ⊹ (B × C) → (A ⊹ B) × (A ⊹ C)
-ex11 = {!!}
+ex11 (left x) = left x , left x
+ex11 (right (x , x₁)) = right x , right x₁
 
 ¬ : Set → Set 
 ¬ P = P → ⊥
   -- ¬ can be keyed in by \neg
 
 ex12 : ∀ {A} → A → ¬ (¬ A)
-ex12 = {!!}
+ex12 a ¬a = ¬a a
 
 ex13 : ∀ {A B} → (¬ A) ⊹ (¬ B) → ¬ (A × B)
-ex13 = {!!}
+ex13 (left  ¬a) (a , b) = ¬a a
+ex13 (right ¬b) (a , b) = ¬b b
 
 ex14 : ∀ {A B} → (A → B) → (¬ B → ¬ A)
-ex14 = {!!}
+ex14 a→b ¬b ¬a = ¬b (a→b ¬a)
