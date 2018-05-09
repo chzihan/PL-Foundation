@@ -97,7 +97,7 @@ _++_ : ∀ {A m n} → Vec A m → Vec A n → Vec A (m + n)
 
 doubleL : ∀ {A} → List A → List A
 doubleL [] = [] 
-doubleL (x ∷ xs) = x ∷ x ∷ xs
+doubleL (x ∷ xs) = x ∷ x ∷ doubleL xs
 
 interleaveL : ∀ {A} → List A → List A → List A
 interleaveL [] ys = ys
@@ -128,12 +128,12 @@ data Even : ℕ → Set where
   -- Let's try proving that 6 is even,
 
 6-even : Even 6
-6-even = {!!}
+6-even = 2+even (2+even (2+even 0even))
 
   -- and that if n is even, so is 4 + n.
 
 4+even : ∀ n → Even n → Even (4 + n)
-4+even = {!!}
+4+even x p =  2+even (2+even p)
 
  {- * The following are some more exercises using ⊥.
       Not mandatory, but try if you want to understand
