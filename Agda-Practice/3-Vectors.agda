@@ -148,7 +148,7 @@ data ⊥ : Set where
   -- Of course, if 2+n is not even, nor is n.
 
 ¬e2+n→¬en : ∀ n → ¬ (Even (suc (suc n))) → ¬ (Even n)
-¬e2+n→¬en n = {!!}
+¬e2+n→¬en n ¬e2+n en = ¬e2+n (2+even en)
 
   -- One may also define another datatype serving
   -- as a proof that a number is odd.
@@ -193,7 +193,7 @@ data _≡_ {a} {A : Set a} (x : A) : A → Set a where
     refl : x ≡ x
 
 {-# BUILTIN EQUALITY _≡_ #-}
-{-# BUILTIN REFL refl #-}
+-- {-# BUILTIN REFL refl #-}
 
 infix 4 _≡_
 
@@ -203,24 +203,37 @@ infix 4 _≡_
 -- blank. Josh will teach you how to construct +-suc. 
 
 +-suc : ∀ m n → m + suc n ≡ suc (m + n)
-+-suc m n = {!!}
++-suc zero n = refl
++-suc (suc m) n rewrite +-suc m n = refl 
 
 -- But try to use +-suc to define double.
 
 double : ∀ {A n} → Vec A n → Vec A (n + n)
 double {A} {zero} [] = []
-double {A} {suc n} (x ∷ xs) with +-suc n n
-... | p rewrite p = x ∷ x ∷ double xs
+double {A} {suc n} (x ∷ xs)
+       with +-suc n n
+...  | p rewrite p = x ∷ x ∷ double xs
 
 -- Of course, given m and n, we can produce a proof
 -- that m + n ≡ n + m. You might not be able to do it now
 -- either.
 
+cong : ∀ {A : Set} {B : Set}
+       (f : A → B) {x y} → x ≡ y → f x ≡ f y
+cong f refl = refl
+
++-zero : ∀ n → n ≡ n + zero
++-zero zero = refl
++-zero (suc n) = cong suc (+-zero n) 
+
+
 +-comm : ∀ m n → m + n ≡ n + m
-+-comm m n = {!!}
++-comm zero n = +-zero n
++-comm (suc m) n rewrite +-suc n m | +-comm m n = refl
 
 -- But, use +-comm to define interleave.
 
 interleave : ∀ {A m n} → Vec A m → Vec A n → Vec A (m + n)
-interleave [] ys = {!!}
-interleave {A} {suc m} {n} (x ∷ xs) ys = {!!}
+interleave [] ys = ys
+interleave {A} {suc m} {n} (x ∷ xs) ys
+           rewrite +-comm m n = x ∷ interleave ys xs

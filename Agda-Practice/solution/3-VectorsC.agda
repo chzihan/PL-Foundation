@@ -192,7 +192,7 @@ data _≡_ {a} {A : Set a} (x : A) : A → Set a where
     refl : x ≡ x
 
 {-# BUILTIN EQUALITY _≡_ #-}
-{-# BUILTIN REFL refl #-}
+-- {-# BUILTIN REFL refl #-}
 
 infix 4 _≡_
 
