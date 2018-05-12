@@ -4,6 +4,7 @@ open import Data.Bool
 open import Relation.Binary.PropositionalEquality
 
 
+
 data Type : Set where
   nat : Type
   bool : Type
