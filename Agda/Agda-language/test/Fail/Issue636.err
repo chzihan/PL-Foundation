@@ -1,0 +1,6 @@
+Issue636.agda:15,1-16,26
+Termination checking failed for the following functions:
+  not-d
+Problematic calls:
+  not-d (♭ x)
+    (at Issue636.agda:16,15-20)

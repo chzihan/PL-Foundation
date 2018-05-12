@@ -1,0 +1,72 @@
+# In the migration from Darcs to GitHub, we lost some information
+# about the authors. The information from Git commands,
+# e.g. git shortlog -nse, is better by using this file. The creation
+# of this file was based on the .authorspellings Darcs file. If your
+# entry is missing or wrong feel free to add or change it.
+
+# ASR (17 June 2014). In the Darcs repository, Nils Anders Danielsson
+# and Dominique Devriese had 1479 and 73 patches, respectively; but in
+# the master branch of the GitHub repository, they only have 1471 and
+# 72 commits, respectively. I couldn't fix it.
+
+# Please keep this file in alphabetic order!
+
+##############################################################################
+
+Adam Gundry <adam.gundry@strath.ac.uk>
+Alan Jeffrey <ajeffrey@bell-labs.com> ajeffrey
+Alexandre Buisse <buisse@cs.chalmers.se>
+Andreas Abel <andreas.abel@ifi.lmu.de> andreas.abel
+Andreas Abel <andreas.abel@ifi.lmu.de> abel <abel@cs.chalmers.se>
+Andrea Vezzosi <sanzhiyan@gmail.com>
+Andrés Sicard-Ramírez <asr@eafit.edu.co> andres.sicard.ramirez
+Andrés Sicard-Ramírez <asr@eafit.edu.co> andres.sicard.ramirez <andres.sicard.ramirez@gmail.com>
+Andrés Sicard-Ramírez <asr@eafit.edu.co> andres.sicard <andres.sicard@gmail.com>
+<asr@eafit.edu.co> <andres.sicard.ramirez@gmail.com>
+Christian Sattler <sattler.christian@gmail.com>
+Daniel Gustafsson <daniel.gustafsson@gmail.com> daniel.gustafsson
+Darin Morrison <dwm@cs.nott.ac.uk> dwm
+Darin Morrison <dwm@cs.nott.ac.uk> darinmorrison <darinmorrison@gmail.com>
+Dominique Devriese <dominique.devriese@cs.kuleuven.be> dominique.devriese <dominique.devriese@gmail.com>
+Dominique Devriese <dominique.devriese@cs.kuleuven.be> dominique.devriese
+Fabien Renaud <fabienr@chalmers.se>
+Fredrik Lindblad <frelindb@chalmers.se> frelindb <frelindb@gmail.com>
+Fredrik Lindblad <frelindb@chalmers.se> frelindb
+Fredrik Nordvall Forsberg <csfnf@swansea.ac.uk> <fredrik.nordvall-forsberg@strath.ac.uk>
+Fredrik Nordvall Forsberg <csfnf@swansea.ac.uk> csfnf <csfnf@swansea.ac.uk>
+Guillaume Brunerie <guillaume.brunerie@gmail.com>
+Guillaume Allais <guillaume.allais@ens-lyon.org> gallais
+James Burton <j.burton@brighton.ac.uk>
+James Chapman <james@cs.ioc.ee> james
+James Chapman <james@cs.ioc.ee> James Chapman <jmchapman@gmail.com>
+Jean-Philippe Bernardy <jeanphilippe.bernardy@gmail.com> jeanphilippe.bernardy
+Jesper Cockx <jesper.cockx@cs.kuleuven.be> jesper.cockx
+Jesper Cockx <jesper.cockx@cs.kuleuven.be> <jesper@sikanda.be>
+Karl Mehltretter <mehltret@cip.ifi.lmu.de>
+Kuen-Bang Hou (Favonia) <favonia@gmail.com>
+Lennart Augustsson <lennart@augustsson.net>
+Makoto Takeyama <makoto.takeyama@aist.go.jp> makoto.takeyama
+Marcin Benke <marcin.benke@gmail.com> marcin.benke
+Nils Anders Danielsson <nils.anders.danielsson@gmail.com> <nad@cs.chalmers.se>
+Nils Anders Danielsson <nils.anders.danielsson@gmail.com> <nad@cse.gu.se>
+Nils Anders Danielsson <nils.anders.danielsson@gmail.com> nils.anders.danielsson <nils.anders.danielsson@86b02449-c53c-0410-81b4-87051234213d>
+Noam Zeilberger <noam.zeilberger@gmail.com>
+Nobuo Yamashita <nobuo-yamashita@aist.go.jp> nobuo-yamashita
+Olle Fredriksson <fredriksson.olle@gmail.com> fredriksson.olle
+Patrick Palka <patrick@parcs.ath.cx>
+Patrik Jansson <patrikj@chalmers.se> patrikj
+Péter Divianszki <divipp@gmail.com> divipp
+Ryan Scott <ryan.gl.scott@ku.edu>
+Samuel Gélineau <gelisam@gmail.com>
+Shin-Cheng Mu <scm@iis.sinica.edu.tw>
+Stefan Monnier <monnier@iro.umontreal.ca> monnier
+Steven Keuchel <steven.keuchel@gmail.com>
+Thomas Anberree <thomas.anberree@nottingham.edu.cn>
+Thorsten Altenkirch <txa@cs.nott.ac.uk>
+Ulf Norell <ulfn@chalmers.se> ulfn <ulfn@cs.chalmers.se>
+Ulf Norell <ulfn@chalmers.se> ulf.norell <ulf.norell@gmail.com>
+Ulf Norell <ulfn@chalmers.se> ulf.norell <ulf.norell@86b02449-c53c-0410-81b4-87051234213d>
+Ulf Norell <ulfn@chalmers.se> ulfn
+<ulfn@chalmers.se> <ulf.norell@gmail.com>
+<w.s.swierstra@uu.nl> <wss@cs.nott.ac.uk>
+Wojciech Jedynak <wjedynak@gmail.com>
